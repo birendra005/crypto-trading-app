@@ -1,0 +1,12 @@
+:root {
+    --primary-color: #0c7277;
+    --text-color: #111;
+    --border-radius: 8px;
+    --bg-color: #fff;
+    --secondary-color: #ffffff;
+  }
+
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
