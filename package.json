@@ -2,13 +2,16 @@
   "name": "crypto-trading-app",
   "private": true,
   "version": "0.0.0",
+   "homepage": "https://birendra005.github.io/crypto-trading-app",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .ts,.tsx",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -22,6 +25,7 @@
     "axios": "^1.10.0",
     "classnames": "^2.5.1",
     "crypto-js": "^4.2.0",
+    "gh-pages": "^6.3.0",
     "i18next": "^25.3.4",
     "i18next-browser-languagedetector": "^8.2.0",
     "react": "^19.1.0",
