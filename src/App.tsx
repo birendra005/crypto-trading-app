@@ -1,10 +1,15 @@
+
 import './App.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AppRouter } from './router';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
-      <p>Crypto Trading App</p>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <AppRouter />
+    </QueryClientProvider>
   );
 }
 

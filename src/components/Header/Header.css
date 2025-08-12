@@ -1,0 +1,38 @@
+.header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding: 20px 30px;
+    z-index: 1000;
+    background-color: #737874;
+    color: #ffffff;
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-left .nav-item {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  .avatar {
+    background-color: #0C7277;
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .user-info {
+     display:flex;
+     align-items: center;
+  }

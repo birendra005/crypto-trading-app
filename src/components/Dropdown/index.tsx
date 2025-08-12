@@ -18,7 +18,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
       value={value}
       onChange={(e) => onChange(e.target.value)}
     >
-      {options.map((opt) => (
+      {options?.map((opt) => (
         <option key={opt.value} value={opt.value}>
           {opt.label}
         </option>

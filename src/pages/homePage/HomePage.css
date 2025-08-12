@@ -1,0 +1,7 @@
+.home-page {
+    padding: 24px;
+  }
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
