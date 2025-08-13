@@ -2,7 +2,7 @@
   "name": "crypto-trading-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://birendra005.github.io/crypto-trading-app",
+  "homepage": "https://birendra005.github.io/crypto-trading-app/",
   "type": "module",
   "scripts": {
     "dev": "vite",
