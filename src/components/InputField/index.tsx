@@ -1,9 +1,9 @@
 import React from 'react';
-import './Input.css'; // import your CSS
+import './Input.css';
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-const Input: React.FC<InputProps> = (props) => {
+const Input: React.FC<InputProps> = props => {
   return <input className="input" {...props} />;
 };
 

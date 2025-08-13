@@ -1,5 +1,5 @@
 import './Header.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Button from '../Button';
 import { useAuthStore, type User } from '../../stores/authStore';
 import LoginModal from '../../pages/homePage/LoginModal';
@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 
 export const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
 
   const { isLoggedIn, user, login, logout } = useAuthStore();
@@ -39,10 +40,16 @@ export const Header = () => {
     <header className="header">
       <nav className="nav">
         <div className="nav-left">
-          <span className="nav-item" onClick={() => navigate('/')}>
+          <span
+            className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}
+            onClick={() => navigate('/')}
+          >
             {t('home')}
           </span>
-          <span className="nav-item" onClick={() => navigate('/trade')}>
+          <span
+            className={`nav-item ${location.pathname === '/trade' ? 'active' : ''}`}
+            onClick={() => navigate('/trade')}
+          >
             {t('trade')}
           </span>
         </div>

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Table.css';
 import Loader from '../Loader';
 
 export type TableColumn<T> = {
   key: keyof T;
   header: string;
-  render?: (value: any, row: T) => React.ReactNode;
+  sortable?: boolean;
+  render?: () => React.ReactNode;
 };
 
 type TableProps<T> = {
@@ -14,19 +15,57 @@ type TableProps<T> = {
   loading: boolean;
 };
 
-function Table<T>({ columns, data, loading }: TableProps<T>) {
+function Table<T extends Record<string, any>>({ columns, data, loading }: TableProps<T>) {
+  const [sortKey, setSortKey] = useState<keyof T | null>(null);
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
+  const handleSort = (key: keyof T) => {
+    if (key === sortKey) {
+      setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortKey(key);
+      setSortOrder('asc');
+    }
+  };
+
+  const sortedData = React.useMemo(() => {
+    if (!sortKey) return data;
+
+    return [...data].sort((a, b) => {
+      const aVal = a[sortKey];
+      const bVal = b[sortKey];
+
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return sortOrder === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+
+      return sortOrder === 'asc'
+        ? String(aVal).localeCompare(String(bVal))
+        : String(bVal).localeCompare(String(aVal));
+    });
+  }, [data, sortKey, sortOrder]);
+
   return (
     <>
       <table className="table">
         <thead>
           <tr>
             {columns.map(col => (
-              <th key={String(col.key)}>{col.header}</th>
+              <th
+                key={String(col.key)}
+                onClick={() => col.sortable && handleSort(col.key)}
+                style={{ cursor: col.sortable ? 'pointer' : 'default' }}
+              >
+                {col.header}
+                {col.sortable && sortKey === col.key && (
+                  <span style={{ marginLeft: '4px' }}>{sortOrder === 'asc' ? '🔼' : '🔽'}</span>
+                )}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {data.map((row, idx) => (
+          {sortedData.map((row, idx) => (
             <tr key={idx}>
               {columns.map(col => (
                 <td key={String(col.key)}>

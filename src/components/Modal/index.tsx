@@ -16,9 +16,9 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children, title }) => {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
           <h2 className="modal-title">{title}</h2>
-          <button className="modal-close" onClick={onClose}>
+          <div className="modal-close" onClick={onClose}>
             ×
-          </button>
+          </div>
         </div>
         {children}
       </div>

@@ -33,9 +33,9 @@ export const HomePage = () => {
   };
 
   const columns = [
-    { key: 'name', header: 'Name' },
+    { key: 'name', header: 'Name', sortable: true },
     { key: 'symbol', header: 'Symbol' },
-    { key: 'current_price', header: 'Price ($)' },
+    { key: 'current_price', header: 'Price ($)', sortable: true },
     {
       key: 'actions',
       header: 'Actions',

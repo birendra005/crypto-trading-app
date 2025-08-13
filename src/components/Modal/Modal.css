@@ -24,13 +24,15 @@
   .modal-close {
     background: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
   .modal-title{
     font-size: 24px;
     font-weight: bolder;
-    color: #737874 !important;
+    color: #0c7277;
   }
   .modal-header {
      display:flex;
