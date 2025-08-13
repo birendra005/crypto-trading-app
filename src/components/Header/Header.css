@@ -16,10 +16,14 @@
   .nav-left .nav-item {
     margin-right: 20px;
     cursor: pointer;
+    font-size: 18px;
+     font-weight: bolder;
   }
   .nav-right {
     display: flex;
     align-items: center;
+    font-size: 18px;
+    font-weight: bolder;
   }
   .avatar {
     background-color: #0C7277;
@@ -35,4 +39,19 @@
   .user-info {
      display:flex;
      align-items: center;
+  }
+  .user-info-details {
+      margin-inline: 40px;
+      display: flex;
+      align-items: center;
+  }
+  .user-info-icon {
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+  }
+  .logout-icon {
+     width: 30px;
+     height: 30px;
+     border-radius: 50%;
   }

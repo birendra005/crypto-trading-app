@@ -7,6 +7,7 @@ import { useState } from 'react';
 import userIcon from '../../assets/userIcon.png';
 import logoutIcon from '../../assets/logoutIcon.png';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -14,8 +15,12 @@ export const Header = () => {
 
   const { isLoggedIn, user, login, logout } = useAuthStore();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
+
   const handleLogin = (user: User) => {
     login(user);
+    setTimeout(() => {
+      toast.success(t('loginSuccess'));
+    }, 500);
   };
 
   const handleCloseLoginModal = () => {
@@ -25,15 +30,15 @@ export const Header = () => {
   const onLogout = () => {
     navigate('/');
     logout();
+    setTimeout(() => {
+      toast.success(t('logoutSuccess'));
+    }, 500);
   };
 
   return (
     <header className="header">
       <nav className="nav">
-        <div
-          className="nav-left"
-          style={{ fontSize: '18px', fontWeight: 'bolder' }}
-        >
+        <div className="nav-left">
           <span className="nav-item" onClick={() => navigate('/')}>
             {t('home')}
           </span>
@@ -44,26 +49,16 @@ export const Header = () => {
         <div className="nav-right">
           {isLoggedIn ? (
             <div className="user-info">
-              <div
-                style={{
-                  marginInline: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <img
-                  src={userIcon}
-                  alt="Profile"
-                  style={{ width: '40px', height: '40px', borderRadius: '50%' }}
-                />
-                <p style={{ fontSize: '18px', fontWeight: 'bolder' }}>
+              <div className="user-info-details">
+                <img src={userIcon} alt="Profile" className="user-info-icon" />
+                <p>
                   {t('hi')}, {user?.name}
                 </p>
               </div>
               <img
                 src={logoutIcon}
                 alt="Profile"
-                style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+                className="logout-icon"
                 onClick={() => {
                   onLogout();
                 }}
@@ -81,11 +76,7 @@ export const Header = () => {
           )}
         </div>
       </nav>
-      <LoginModal
-        open={openLoginModal}
-        onClose={handleCloseLoginModal}
-        onLogin={handleLogin}
-      />
+      <LoginModal open={openLoginModal} onClose={handleCloseLoginModal} onLogin={handleLogin} />
     </header>
   );
 };
