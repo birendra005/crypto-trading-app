@@ -7,6 +7,7 @@ import Textfield from '../../components/Textfield';
 import Button from '../../components/Button';
 import type { User } from '../../stores/authStore';
 import { useTranslation } from 'react-i18next';
+import './HomePage.css';
 
 type LoginFormData = {
   name: string;
@@ -39,11 +40,10 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, onClose, onLogin }) => {
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
-      <h2>{t('login')}</h2>
+    <Modal open={open} onClose={onClose} title={t('login')}>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <Textfield label={t('name')} placeholder={t('name')} {...register('name')} />
-        {errors.name && <p style={{ color: 'red' }}>{errors.name.message}</p>}
+        {errors.name && <p className="error">{errors.name.message}</p>}
 
         <Textfield
           label={t('email')}
@@ -51,7 +51,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, onClose, onLogin }) => {
           placeholder="you@example.com"
           {...register('email')}
         />
-        {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
+        {errors.email && <p className="error">{errors.email.message}</p>}
 
         <Textfield
           label={t('password')}
@@ -59,7 +59,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, onClose, onLogin }) => {
           placeholder={t('password')}
           {...register('password')}
         />
-        {errors.password && <p style={{ color: 'red' }}>{errors.password.message}</p>}
+        {errors.password && <p className="error">{errors.password.message}</p>}
 
         <Button type="submit" style={{ padding: '8px 16px', marginTop: '1rem' }}>
           {t('login')}

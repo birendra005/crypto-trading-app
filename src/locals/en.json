@@ -19,5 +19,7 @@
   "swap": "Swap",
   "fiatUsdResult": "Fiat (USD) Result",
   "cryptoResult" : "Crypto Result",
-  "loginError": "Please log in to access the Trade Page."
+  "loginError": "Please log in to access the Trade Page.",
+  "loginSuccess": "Login successful!",
+  "logoutSuccess": "Logout successful!"
 }

@@ -1,0 +1,15 @@
+.label {
+     display: block;
+     margin-bottom: 0.5rem;
+     font-size: 12px;
+     font-weight: bolder;
+     color: #737874;
+}
+
+.input {
+     width: 100%;
+     padding: 8px;
+     box-sizing: border-box;
+     height: 40px;
+     border-radius: 5px;
+}

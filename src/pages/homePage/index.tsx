@@ -53,7 +53,7 @@ export const HomePage = () => {
       <h2> {t('cryptoAssets')}</h2>
 
       {showInitialLoader ? (
-        <div style={{ marginBlock: '20%' }}>
+        <div style={{ marginTop: '20%' }}>
           <Loader />{' '}
         </div>
       ) : (
